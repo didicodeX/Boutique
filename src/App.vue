@@ -5,8 +5,8 @@ import Cart from './components/Cart/Cart-component.vue'
 import TheFooter from './components/Footer-component.vue'
 import data from './data/product'
 import { computed, reactive } from 'vue'
-import type { ProductInterface, ProductCartInterface } from './interfaces'
-// import product from './data/product'
+import type { ProductInterface, ProductCartInterface, FiltersInterface } from './interfaces'
+import DEFAULT_FILTERS from './data/filters.ts'
 
 // const products = reactive<ProductInterface[]>(data)
 // const cart = reactive<ProductInterface[]>([])
@@ -14,9 +14,11 @@ import type { ProductInterface, ProductCartInterface } from './interfaces'
 const state = reactive<{
   products: ProductInterface[]
   cart: ProductCartInterface[]
+  filter: FiltersInterface[]
 }>({
   products: data,
   cart: [],
+  filters: DEFAULT_FILTERS
 })
 
 function addProductToCart(productId: number): void {

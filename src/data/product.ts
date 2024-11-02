@@ -6,6 +6,7 @@ export default [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis',
     price: 1500,
+    category: 'desktop'
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export default [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis',
     price: 2300,
+    category: 'desktop'
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ export default [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis',
     price: 1200,
+    category: 'gamer'
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ export default [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis',
     price: 4500,
+    category: 'streaming'
   },
   {
     id: 5,
@@ -38,6 +42,7 @@ export default [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis',
     price: 3755,
+    category: 'gamer'
   },
   {
     id: 6,
@@ -46,6 +51,7 @@ export default [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis',
     price: 2452,
+    category: 'streaming'
   },
   {
     id: 7,
@@ -54,6 +60,7 @@ export default [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis',
     price: 1478,
+     category: 'gamer'
   },
   {
     id: 8,
@@ -62,5 +69,6 @@ export default [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis',
     price: 899,
+     category: 'desktop'
   },
 ];
