@@ -5,8 +5,13 @@ import Cart from './components/Cart/Cart-component.vue'
 import TheFooter from './components/Footer-component.vue'
 import data from './data/product'
 import { computed, reactive } from 'vue'
-import type { ProductInterface, ProductCartInterface, FiltersInterface } from './interfaces'
-import DEFAULT_FILTERS from './data/filters.ts'
+import type {
+  ProductInterface,
+  ProductCartInterface,
+  FiltersInterface,
+  FilterUpdate,
+} from './interfaces'
+import { DEFAULT_FILTERS } from './data/filters'
 
 // const products = reactive<ProductInterface[]>(data)
 // const cart = reactive<ProductInterface[]>([])
@@ -14,11 +19,11 @@ import DEFAULT_FILTERS from './data/filters.ts'
 const state = reactive<{
   products: ProductInterface[]
   cart: ProductCartInterface[]
-  filter: FiltersInterface[]
+  filters: FiltersInterface[]
 }>({
   products: data,
   cart: [],
-  filters: DEFAULT_FILTERS
+  filters: DEFAULT_FILTERS,
 })
 
 function addProductToCart(productId: number): void {
@@ -40,25 +45,63 @@ function removeProductFromCart(productId: number): void {
   if (productFromCart) {
     if (productFromCart.quantity === 1)
       state.cart = state.cart.filter(product => product.id !== productId)
-    else
-      productFromCart.quantity--
+    else productFromCart.quantity--
   }
 }
+
+function updateFilter(filterUpdate: FilterUpdate) {
+  if (filterUpdate.search !== undefined) {
+    state.filters.search = filterUpdate.search;
+  } else if (filterUpdate.priceRange) {
+    state.filters.priceRange = filterUpdate.priceRange;
+  } else if (filterUpdate.category) {
+    state.filters.category = filterUpdate.category;
+  } else {
+    state.filters = { ...DEFAULT_FILTERS };
+  }
+}
+
+
 const cartEmpty = computed(() => state.cart.length === 0)
+
+const filteredProducts = computed(() => {
+  return state.products.filter(product => {
+    if (
+      product.title
+        .toLowerCase()
+        .startsWith(state.filters.search.toLowerCase()) &&
+      product.price >= state.filters.priceRange[0] &&
+      product.price <= state.filters.priceRange[1] &&
+      (product.category === state.filters.category ||
+        state.filters.category === 'all')
+    ) {
+      return true
+    } else {
+      return false
+    }
+  })
+})
+
+console.log(filteredProducts)
 </script>
 
 <template>
-  <div class="app-container" :class="{
-    gridEmpty:cartEmpty
-  }">
+  <div
+    class="app-container"
+    :class="{
+      gridEmpty: cartEmpty,
+    }"
+  >
     <TheHeader class="header" />
     <Shop
-      class="shop"
-      :products="state.products"
+      @update-filter="updateFilter"
+      :products="filteredProducts"
+      :filters="state.filters"
       @add-product-to-cart="addProductToCart"
+      class="shop"
     />
     <Cart
-    v-if="!cartEmpty"
+      v-if="!cartEmpty"
       :cart="state.cart"
       class="cart"
       @remove-product-from-cart="removeProductFromCart"

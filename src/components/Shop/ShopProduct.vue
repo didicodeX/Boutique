@@ -41,6 +41,7 @@ const emit = defineEmits<{
   border-radius: var(--radius);
   box-shadow: var(--box-shadow);
   width: 300px;
+  height: 400px;
   &-image {
     // background: url(../../assets/macbook.png) center/cover;
     height: 200px;

@@ -108,11 +108,22 @@ body {
 .m-30 {
   margin: 30px;
 }
+.mb-5 {
+  margin-bottom: 5px;
 
+}
 .mb-10 {
   margin-bottom: 10px;
 }
+.mb-20 {
+  margin-bottom: 20px;
+}
 
+input {
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: 8px 15px;
+}
 .g-10 {
   gap: 10px;
 }
