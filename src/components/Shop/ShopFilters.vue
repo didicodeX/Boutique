@@ -2,6 +2,7 @@
 import type { FiltersInterface, FilterUpdate } from '../../interfaces'
 defineProps<{
   filters: FiltersInterface
+  nbrOfProducts: number
 }>()
 const emit = defineEmits<{
   (e: 'updateFilter', filterUpdate: FilterUpdate): void
@@ -57,12 +58,25 @@ const emit = defineEmits<{
       <p
         class="category"
         :class="{ selected: filters.category === category }"
-        v-for="category in (['all', 'desktop', 'gamer', 'streaming'] as Category[])"
-        @click="emit('updateFilter', { category })" :key="category"
+        v-for="category in [
+          'all',
+          'desktop',
+          'gamer',
+          'streaming',
+        ] as Category[]"
+        @click="emit('updateFilter', { category })"
+        :key="category"
       >
         {{ category }}
       </p>
     </section>
+    <small class="mb-5">
+      Nombre de résultats:
+      <strong>{{ nbrOfProducts }}</strong>
+    </small>
+    <button class="btn btn-danger" @click="emit('updateFilter', {})">
+      Supprimer les filtres
+    </button>
   </div>
 </template>
 
@@ -78,5 +92,8 @@ const emit = defineEmits<{
 .selected {
   font-weight: bold;
   text-decoration: underline;
+}
+strong {
+  color: #333;
 }
 </style>
