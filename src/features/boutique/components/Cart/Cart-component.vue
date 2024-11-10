@@ -25,4 +25,13 @@ const totalPrice = computed(() => props.cart.reduce((acc,product) => {
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .btn {
+    justify-self: end;
+  }
+}
+</style>

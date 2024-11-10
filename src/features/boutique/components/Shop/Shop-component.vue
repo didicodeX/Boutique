@@ -3,7 +3,7 @@ import type {
   FiltersInterface,
   ProductInterface,
   FilterUpdate,
-} from '../../interfaces';
+} from '../../../../interfaces';
 import ShopProductList from './ShopProductList.vue';
 import ShopFilters from './ShopFilters.vue';
 
@@ -13,7 +13,7 @@ defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: 'addProductToCart', productId: number): void;
+  (e: 'addProductToCart', productId: string): void;
   (e: 'updateFilter', updateFilter: FilterUpdate): void;
 }>();
 </script>
@@ -27,7 +27,7 @@ const emit = defineEmits<{
       class="shop-filter"
     />
     <ShopProductList
-      class="flex-fill"
+      class="flex-fill scrollable"
       @add-product-to-cart="emit('addProductToCart', $event)"
       :products="products"
     />
@@ -37,5 +37,9 @@ const emit = defineEmits<{
 <style lang="scss" scoped>
 .shop-filter {
   flex: 0 0 200px;
+}
+.scrollable {
+  overflow-y: auto;
+  height: calc(100vh - 100px);
 }
 </style>

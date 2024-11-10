@@ -1,8 +1,8 @@
-import type { Category } from "./Filters.interface.js";
+import type { Category } from "./type.ts";
 import type { ProductInterface } from "./Product.interface.ts";
 
 export interface ProductCartInterface extends ProductInterface {
-  id: number;
+  _id: string;
   title: string;
   image: string;
   price: number;

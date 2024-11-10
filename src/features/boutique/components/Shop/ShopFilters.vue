@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { FiltersInterface, FilterUpdate } from '../../interfaces'
+import type { Category } from '@/interfaces/type';
+import type { FiltersInterface, FilterUpdate } from '../../../../interfaces'
 defineProps<{
   filters: FiltersInterface
   nbrOfProducts: number
@@ -35,7 +36,7 @@ const emit = defineEmits<{
           [1500, 2000],
           [2000, 10000],
         ] as [number, number][]"
-        :key="priceRange"
+        :key="priceRange[0]"
       >
         <input
           type="radio"

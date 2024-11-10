@@ -119,10 +119,17 @@ body {
   margin-bottom: 20px;
 }
 
-input {
+input, select, textarea {
   border: var(--border);
   border-radius: var(--border-radius);
   padding: 8px 15px;
+}
+.form-error {
+  color: var(--danger-1);
+  font-size: 14px;
+}
+select {
+  cursor: pointer;
 }
 .g-10 {
   gap: 10px;
@@ -158,4 +165,11 @@ input {
   &:hover {
     background-color: var(--danger-2);
   }
+}
+
+.card {
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background-color: white;
+  padding: 30px;
 }

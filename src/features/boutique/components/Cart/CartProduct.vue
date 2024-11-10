@@ -25,7 +25,6 @@ const emit = defineEmits<{
   border: var(--border);
   border-radius: var(--radius);
   padding: 10px;
-  flex: 1 0 auto;
 }
 @media screen and (max-width: 1200px) {
   .product {

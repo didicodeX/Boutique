@@ -7,15 +7,15 @@ defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: 'addProductToCart', productId: number): void;
+  (e: 'addProductToCart', productId: string): void;
 }>();
 </script>
 
 <template>
   <div class="flex p-20">
     <ShopProduct
-      @add-product-to-cart="emit('addProductToCart', $event)"
-      v-for="product of products" :key="product.id"
+      @add-product-to-cart="emit('addProductToCart', $event.toString())"
+      v-for="product of products" :key="product._id"
       :product="product"
     />
   </div>
